@@ -1,0 +1,752 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>TS Assistant 2017</title>
+<script type="text/javascript">
+		function crearDocumento(A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,A12,A13,A14,A15,A16,A17){
+			var doc = document.open("text/html","create");
+			if (A14 == "") {
+				error = A13;
+			} else {
+				error = A14;
+			}
+			descripcion = A15;
+			descripcion = (descripcion.split('\n')).join('<br/>');
+			pasos = A16;
+			pasos = (pasos.split('\n')).join('<br/>');
+			chat = A17;
+			chat = (chat.split('\n')).join('<br/>');
+			var texto = "<html><body><br/>Case ID: " + A1 + "<br/><br/>System Info<br/>/*****************************/<br/>Product: " + A2 + "<br/>OS/SP Version:    " + A3 + "<br/>OS Language: " + A4 + "<br/>Vendor: " + A5 + "<br/>Antivirus: " + A6 + "<br/>Connection: " + A7 + "<br/>ISP: " + A8 + "<br/><br/>Client Actions<br/>/*****************************/<br/>SafeMode: " + A9 + "<br/>MSCONFIG: " + A10 + "<br/>System Restore: " + A11 + "<br/>Others: " + A12 + "<br/><br/>Problem Description<br/>/*****************************/<br/>Error Code: " + error + "<br/>Problem Description: " + descripcion + "<br/><br/>Steps<br/>/*****************************/<br/> " + pasos + "<br/><br/>LogMeIn<br/>/*****************************/<br/> " + chat + "<br/></body></html>";
+			doc.write(texto);
+			doc.close();
+		}
+
+		function formReset(myForm) {
+			document.getElementById("myForm").reset();
+		}
+
+		function validar(e) {
+			tecla = (document.all)?e.keyCode:e.which;
+			if (tecla==8) return true;
+			patron = /\d/;
+			te = String.fromCharCode(tecla);
+			return patron.test(te);
+		}
+
+		function autocompletarproducto(){
+			var lista = document.getElementById("A2");
+			
+			var indiceSeleccionado = lista.selectedIndex;
+			var opcionSeleccionada = lista.options[indiceSeleccionado];
+			
+			var textoSeleccionado = opcionSeleccionada.value;
+			
+			if (textoSeleccionado == "Office Mac Home and Student 2016" ||
+				textoSeleccionado == "Office Mac Home and Business 2016" ||
+				textoSeleccionado == "Office Mac Home and Student 2011" ||
+				textoSeleccionado == "Office Mac Home and Business 2011") {
+					document.getElementById("A3").value = "Mac OS X High Sierra";
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Apple";
+					document.getElementById("A6").value = "None";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = "N/A";
+					document.getElementById("A10").value = "N/A";
+					document.getElementById("A11").value = "N/A";
+			} else if (textoSeleccionado == "MSN Explorer" ||
+				textoSeleccionado == "MSN Dial-Up") {
+					document.getElementById("A3").value = "Windows XP";
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Other";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == "Windows Vista") {
+					document.getElementById("A3").value = "Windows Vista";
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Other";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == "Windows 7") {
+					document.getElementById("A3").value = "Windows 7";
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Microsoft Security Essentials";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == "Windows 8") {
+					document.getElementById("A3").value = "Windows 8";
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Windows Defender";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == "Windows 8.1") {
+					document.getElementById("A3").value = "Windows 8.1";
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Windows Defender";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado != " ") {
+					document.getElementById("A3").value = "Windows 10";
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Windows Defender";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == " ") {
+					document.getElementById("A3").value = " ";
+					document.getElementById("A4").value = " ";
+					document.getElementById("A5").value = " ";
+					document.getElementById("A6").value = " ";
+					document.getElementById("A7").value = " ";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			}
+		}
+
+		function autocompletarsistema(){
+			var lista = document.getElementById("A3");
+			
+			var indiceSeleccionado = lista.selectedIndex;
+			var opcionSeleccionada = lista.options[indiceSeleccionado];
+			
+			var textoSeleccionado = opcionSeleccionada.value;
+
+			if (textoSeleccionado == "Mac OS X High Sierra" ||
+				textoSeleccionado == "Mac OS X Sierra" ||
+				textoSeleccionado == "Mac OS X El Capitan" ||
+				textoSeleccionado == "Mac OS X Yosemite" ||
+				textoSeleccionado == "Mac OS X Mavericks" ||
+				textoSeleccionado == "Mac OS X Mountain Lion" ||
+				textoSeleccionado == "Mac OS X Snow Leopard") {
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Apple";
+					document.getElementById("A6").value = "None";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = "N/A";
+					document.getElementById("A10").value = "N/A";
+					document.getElementById("A11").value = "N/A";
+			} else if (textoSeleccionado == "Windows XP") {
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Other";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == "Windows Vista") {
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Other";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == "Windows 7") {
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Microsoft Security Essentials";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == "Windows 8") {
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Windows Defender";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == "Windows 8.1") {
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Windows Defender";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == "Windows 10") {
+					document.getElementById("A4").value = "Spanish";
+					document.getElementById("A5").value = "Other";
+					document.getElementById("A6").value = "Windows Defender";
+					document.getElementById("A7").value = "Wi-Fi";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			} else if (textoSeleccionado == " ") {
+					document.getElementById("A4").value = " ";
+					document.getElementById("A5").value = " ";
+					document.getElementById("A6").value = " ";
+					document.getElementById("A7").value = " ";
+					document.getElementById("A9").value = " ";
+					document.getElementById("A10").value = " ";
+					document.getElementById("A11").value = " ";
+			}			
+		}
+		
+		function validarerror(){
+			var lista = document.getElementById("A13");
+			
+			var indiceSeleccionado = lista.selectedIndex;
+			var opcionSeleccionada = lista.options[indiceSeleccionado];
+			
+			var textoSeleccionado = opcionSeleccionada.value;
+
+			if (textoSeleccionado == " Issue Not Listed	") {
+				document.getElementById("A14").style.visibility = "visible";
+				document.getElementById("A14").value = "";
+			} else {
+				document.getElementById("A14").style.visibility = "hidden";
+				document.getElementById("A14").value = "";
+			}
+		}
+	</script>
+	<style type="text/css">
+		<!--
+		.style1 {
+			font-size: 36px;
+			font-color: white;
+			font-family: "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+			font-style: normal;
+			font-weight: 400;
+		}
+		.final {
+			font-family: "calibri";
+			font-size: 12px;
+			color: #FFFFFF;
+			
+		}
+		.bordest {
+			border: 2px solid #93C6FF;
+		}
+		.textomanual {
+			height:18px; width: 179px;
+			font-family: "Segoe UI";
+			font-size: 10pt;
+			border:1px solid #93C6FF;
+		}
+		
+		.columna1{
+			text-align:right;
+			vertical-align: top;
+			font-family: Segoe UI;
+			font-weight:bold;
+			font-size: 9.5pt;
+			width: 40%;
+			color: #000000;
+		}
+		.columna2{
+			text-align:left;
+			width: 60%;
+		}
+		.columnatitulo{
+			text-align:left;
+			font-family: Segoe UI;
+			font-weight:bold;
+			font-size: 9.5pt;
+			color: #000000;
+		}
+		table{
+			background-color:#E1EFFF;
+			border-radius: 9px;
+		}
+
+.textarea {
+height:120px; width: 190px;
+border:1px solid #93C6FF;
+font-family: Segoe UI;
+font-size: 10pt;
+}
+select {
+height:22px; width: 184px;
+border:1px solid #93C6FF;
+font-family: Segoe UI;
+font-size: 10pt;
+}
+.select2 {
+height:21px; width: 58px;
+border:1px solid #93C6FF;
+font-family: Segoe UI;
+font-size: 10pt;
+}
+.select3 {
+height:21px; width: 44px;
+border:1px solid 255.0.0.0,7;
+font-family: Segoe UI;
+font-size: 10pt;
+}
+.select4 {
+height:21px; width: 118px;
+border:1px solid #93C6FF;
+font-family: Segoe UI;
+font-size: 10pt;
+}
+
+		body { 
+			background-color: slategray; 
+			background-image: url("https://kbdevstorage1.blob.core.windows.net/asset-blobs/19666_en_1");
+			color: #FFFFFF;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+		} 
+		-->
+	</style>
+
+
+</head>
+<body>
+	<center>
+	<div align="left">
+	  <p><span class="style1" >Answer Desk Technical Support Assistant</span><br>
+	  </p>
+	</div>
+	<div align="right">
+	</div>
+	<form id="myForm">
+		<table width="420" border="0" cellpadding="4" class="bordest">
+			<tr>
+				<td class="columna1"></td>
+				<td class="columna2"></td>
+			</tr>
+			<tr>
+				<td class="columna1">SRX: </td>
+				<td class="columna2"><input name="text2" type="text" class="textomanual" id="A1" placeholder="Case ID" onkeypress="return validar(event)"></td>
+			</tr>
+			<tr>
+				<td class="columnatitulo" colspan="2">SYSTEM INFO</td>
+			</tr>
+			<tr>
+				<td class="columna1"></td>
+				<td class="columna2"></td>
+			</tr>
+			<tr>
+				<td class="columna1">Product: </td>
+				<td class="columna2"><select type="text" id="A2" onchange="autocompletarproducto()">
+					<option value=" " selected>--------------------------------</option>
+					<option value="Office 365 Home">Office 365 Home</option>
+					<option value="Office 365 Personal">Office 365 Personal</option>
+					<option value="Office 365 University">Office 365 University</option>
+					<option value="Office Home and Student 2016">Office H&S 2016</option>
+					<option value="Office Home and Business 2016">Office H&B 2016</option>
+					<option value="Office Professional 2016">Office Pro 2016</option>
+					<option value="Office Professional Plus 2016">Office ProPlus 2016</option>
+					<option value="Office Home and Student 2013">Office H&S 2013</option>
+					<option value="Office Home and Business 2013">Office H&B 2013</option>
+					<option value="Office Professional 2013">Office Pro 2013</option>
+					<option value="Office Professional Plus 2013">Office ProPlus 2013</option>
+					<option value="Office Mac Home and Student 2016">Office Mac H&S 2016</option>
+					<option value="Office Mac Home and Business 2016">Office Mac H&B 2016</option>
+					<option value="Office Mac Home and Student 2011">Office Mac H&S 2011</option>
+					<option value="Office Mac Home and Business 2011">Office Mac H&B 2011</option>
+					<option value="Office Home and Student 2010">Office H&S 2010</option>
+					<option value="Office Home and Business 2010">Office H&B 2010</option>
+					<option value="Office Professional 2010">Office Pro 2010</option>
+					<option value="Office Professional Plus 2010">Office ProPlus 2010</option>
+					<option value="Office Basic 2007">Office Basic 2007</option>
+					<option value="Office Home and Student 2007">Office H&S 2007</option>
+					<option value="Office Small Business 2007">Office Small Business 2007</option>
+					<option value="Office Professional 2007">Office Pro 2007</option>
+					<option value="Office Professional Plus 2007">Office ProPlus 2007</option>
+					<option value="Office Enterprise 2007">Office Enterprise 2007</option>
+					<option value="OneDrive">OneDrive</option>
+					<option value="Windows 10">Windows 10</option>
+					<option value="Windows 8.1">Windows 8.1</option>
+					<option value="Windows 8">Windows 8</option>
+					<option value="Windows 7">Windows 7</option>
+					<option value="Windows Vista">Windows Vista</option>
+					<option value="Internet Explorer 11">Internet Explorer 11</option>
+					<option value="MSN Explorer">MSN Explorer</option>
+					<option value="MSN Dial-Up">MSN Dial-Up</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="columna1">Operating System: </td>
+				<td class="columna2"><select type="text" id="A3" onchange="autocompletarsistema()">
+					<option value=" " selected>--------------------------------</option>
+					<option value="Windows 10">Windows 10</option>
+					<option value="Windows 8.1">Windows 8.1</option>
+					<option value="Windows 8">Windows 8</option>
+					<option value="Windows 7">Windows 7</option>
+					<option value="Windows Vista">Windows Vista</option>
+					<option value="Windows XP">Windows XP</option>
+					<option value="Mac OS X High Sierra">Mac OS X High Sierra</option>
+					<option value="Mac OS X Sierra">Mac OS X Sierra</option>
+					<option value="Mac OS X El Capitan">Mac OS X El Capitan</option>
+					<option value="Mac OS X Yosemite">Mac OS X Yosemite</option>
+					<option value="Mac OS X Mavericks">Mac OS X Mavericks</option>
+					<option value="Mac OS X Mountain Lion">Mac OS X Mountain Lion</option>
+					<option value="Mac OS X Snow Leopard">Mac OS X Snow Leopard</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="columna1">OS Language:</td>
+				<td class="columna2"><select type="text" id="A4">
+					<option value=" " selected>--------------------------------</option>
+					<option value="Spanish">Spanish</option>
+					<option value="English">English</option>
+					<option value="Catalan">Catalan</option>
+					<option value="Portuguese">Portuguese</option>
+					<option value="French">French</option>
+					<option value="Other">Other</option>
+				</select></td>
+			</tr>
+			<tr> <td class="columna1">Vendor:</td>
+				<td class="columna2"><select type="text" id="A5">
+					<option value=" " selected>--------------------------------</option>
+					<option value="Acer">Acer</option>
+					<option value="Apple">Apple</option>
+					<option value="Asus">Asus</option>
+					<option value="DELL">Dell</option>
+					<option value="Gateway">Gateway</option>
+					<option value="Hewlett Packard">Hewlett Packard</option>
+					<option value="Lanix">Lanix</option>
+					<option value="Lenovo">Lenovo</option>
+					<option value="LG">LG</option>
+					<option value="MainGear">MainGear</option>
+					<option value="Packard Bell">Packard Bell</option>
+					<option value="Samsung">Samsung</option>
+					<option value="Sony">Sony</option>
+					<option value="Toshiba">Toshiba</option>
+					<option value="Other">Other</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="columna1">Antivirus: </td>
+				<td class="columna2"><select type="text" id="A6">
+					<option value=" " selected>--------------------------------</option>
+					<option value="Avast Antivirus">Avast</option>
+					<option value="AVG Antivirus">AVG</option>
+					<option value="Avira Antivirus">Avira</option>
+					<option value="BitDefender Antivirus">BitDefender</option>
+					<option value="Comodo Internet Security">Comodo</option>
+					<option value="ESET Smart NOD32">ESET NOD32</option>
+					<option value="ESET Smart Security">ESET Smart Security</option>
+					<option value="GData Antivirus">GData</option>
+					<option value="Kaspersky Antivirus">Kaspersky</option>
+					<option value="McAfee Antivirus">McAfee</option>
+					<option value="Microsoft Security Essentials">Microsoft Security Essentials</option>
+					<option value="Symantec Norton Antivirus">Norton</option>
+					<option value="Panda Antivirus">Panda</option>
+					<option value="Trend Micro Internet Security">Trend Micro</option>
+					<option value="Windows Defender">Windows Defender</option>
+					<option value="Other">Other</option>
+					<option value="None">None</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="columna1">Connection: </td>
+				<td class="columna2"><select type="text" id="A7">
+					<option value=" " selected>--------------------------------</option>
+					<option value="Wi-Fi">Wi-Fi</option>
+					<option value="ASDL Cable">ADSL Cable</option>
+					<option value="Modem 3G/4G">Modem 3G/4G</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="columna1">ISP: </td>
+				<td class="columna2"><input name="text2" type="text" class="textomanual" id="A8"></td>
+			</tr>
+		</table>
+		<br/>
+		<table width="420" border="0" cellpadding="4" class="bordest">
+			<tr>
+				<td class="columnatitulo" COLSPAN=2>CLIENT ACTIONS</td>
+			</tr>
+			<tr>
+				<td class="columna1"></td>
+				<td class="columna2"></td>
+			</tr>
+			<tr>
+				<td class="columna1">Safe Mode:</td>
+				<td class="columna2"><select type="text" id="A9">
+					<option value=" " selected>--------------------------------</option>
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+					<option value="N/A">N/A</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="columna1">MSCONFIG:</td>
+				<td class="columna2"><select type="text" id="A10">
+					<option value=" " selected>--------------------------------</option>
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+					<option value="N/A">N/A</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="columna1">System restore:</td>
+				<td class="columna2"><select type="text" id="A11">
+					<option value=" " selected>--------------------------------</option>
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+					<option value="N/A">N/A</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="columna1">Others:</td>
+				<td class="columna2"><input name="text2" type="text" class="textomanual" id="A12"></td>
+			</tr>
+		</table>
+		<br/>
+		<table width="420" border="0" cellpadding="4" class="bordest">
+			<tr>
+				<td class="columnatitulo" colspan="2">PROBLEM DESCRIPTION</td>
+			</tr>
+			<tr>
+				<td class="columna1"></td>
+				<td class="columna2"></td>
+			</tr>
+			<tr>
+				<td class="columna1">Error code:</td>
+				<td class="columna2"><select type="text" id="A13" onchange="validarerror()">
+					<option value=" " selected>--------------------------------</option>
+					<option value="	App closes unexpectedly	"	>	App closes unexpectedly	</option>
+					<option value="	App missing in programs and features	"	>	App missing in programs and features	</option>
+					<option value="	Available updates are not listed	"	>	Available updates are not listed	</option>
+					<option value="	Blank/Black/Colored display	"	>	Blank/Black/Colored display	</option>
+					<option value="	Cannot send invitation via email program	"	>	Cannot send invitation via email program	</option>
+					<option value="	Can't print	"	>	Can't print	</option>
+					<option value="	0x000000C4	"	>	Error: 0x000000C4	</option>
+					<option value="	0x8000FFFF	"	>	Error: 0x8000FFFF	</option>
+					<option value="	0x80041015	"	>	Error: 0x80041015	</option>
+					<option value="	0x8004FC12	"	>	Error: 0x8004FC12	</option>
+					<option value="	0x80070002	"	>	Error: 0x80070002	</option>
+					<option value="	0x80070004	"	>	Error: 0x80070004	</option>
+					<option value="	0x80070005	"	>	Error: 0x80070005	</option>
+					<option value="	0x8007007B	"	>	Error: 0x8007007B	</option>
+					<option value="	0x80070426	"	>	Error: 0x80070426	</option>
+					<option value="	0x80070490	"	>	Error: 0x80070490	</option>
+					<option value="	0x80070570	"	>	Error: 0x80070570	</option>
+					<option value="	0x80070643	"	>	Error: 0x80070643	</option>
+					<option value="	0x80070646	"	>	Error: 0x80070646	</option>
+					<option value="	0x800706BA	"	>	Error: 0x800706BA	</option>
+					<option value="	0x80073712	"	>	Error: 0x80073712	</option>
+					<option value="	0x800F020B	"	>	Error: 0x800F020B	</option>
+					<option value="	0x800F081F	"	>	Error: 0x800F081F	</option>
+					<option value="	0x800F0906	"	>	Error: 0x800F0906	</option>
+					<option value="	0X800F0922	"	>	Error: 0X800F0922	</option>
+					<option value="	0x8020002E	"	>	Error: 0x8020002E	</option>
+					<option value="	0x8020002E	"	>	Error: 0x8020002E	</option>
+					<option value="	0x80240016	"	>	Error: 0x80240016	</option>
+					<option value="	0x80240020	"	>	Error: 0x80240020	</option>
+					<option value="	0x80240031	"	>	Error: 0x80240031	</option>
+					<option value="	0x80242009	"	>	Error: 0x80242009	</option>
+					<option value="	0x80244018	"	>	Error: 0x80244018	</option>
+					<option value="	0x8024401C 	"	>	Error: 0x8024401C 	</option>
+					<option value="	0x80244FFF	"	>	Error: 0x80244FFF	</option>
+					<option value="	0x80246007	"	>	Error: 0x80246007	</option>
+					<option value="	0x80246008	"	>	Error: 0x80246008	</option>
+					<option value="	0x8024800A	"	>	Error: 0x8024800A	</option>
+					<option value="	0x8024A000  "	>	Error: 0x8024A000  	</option>
+					<option value="	0xC004C003  "	>	Error: 0xC004C003   </option>
+					<option value="	0xC004C008	"	>	Error: 0xC004C008	</option>
+					<option value="	0xC004C4AA	"	>	Error: 0xC004C4AA	</option>
+					<option value="	0xc004e016  "	>	Error: 0xc004e016  	</option>
+					<option value="	0xC004f012	"	>	Error: 0xC004f012	</option>
+					<option value="	0xC004F034  "	>	Error: 0xC004F034  	</option>
+					<option value="	0xc004f050  "	>	Error: 0xc004f050  	</option>
+					<option value="	0xC004F061	"	>	Error: 0xC004F061	</option>
+					<option value="	0xC00D11CD	"	>	Error: 0xC00D11CD	</option>
+					<option value="	0xC1900101	"	>	Error: 0xC1900101	</option>
+					<option value="	0XC1900102	"	>	Error: 0XC1900102	</option>
+					<option value="	0xc1900104	"	>	Error: 0xc1900104	</option>
+					<option value="	0xD0070005	"	>	Error: 0xD0070005	</option>
+					<option value="	12007-4  	"	>	Error: 12007-4  	</option>
+					<option value="	30027-4	    "	> 	Error: 30027-4  	</option>
+					<option value="	30174-4 	"	>	Error: 30174-4  	</option>
+					<option value="	Access Denied	"	>	Error: Access Denied	</option>
+					<option value="	Account not available	"	>	Error: Account not available	</option>
+					<option value="	Before you can add features, you need to activate your current edition	"	>	Error:you need to activate your current edition	</option>
+					<option value="	Cannot start Microsoft Outlook. Cannot open the Outlook window	"	>	Error: Cannot start Microsoft Outlook. Cannot open the Outlook window	</option>
+					<option value="	Failure configuring Windows Updates. Reverting changes.	"	>	Error: Failure configuring Windows Updates. Reverting changes.	</option>
+					<option value="	IntegratedOffice.exe not found	"	>	Error: IntegratedOffice.exe not found	</option>
+					<option value="	Internal Error Error running compatibility check. Check logs for details	"	>	Error: Internal Error running compatibility check.</option>
+					<option value="	Internet Explorer has stopped working	"	>	Error: Internet Explorer has stopped working	</option>
+					<option value="	Invalid password	"	>	Error: Invalid password	</option>
+					<option value="	Invalid Product Key	"	>	Error: Invalid Product Key	</option>
+					<option value="	It Looks like someone else might be using your account	"	>	Error: It Looks like someone else might be using your account	</option>
+					<option value="	Microsoft Excel has stopped working	"	>	Error: Microsoft Excel has stopped working	</option>
+					<option value="	Microsoft OneNote has stopped working	"	>	Error: Microsoft OneNote has stopped working	</option>
+					<option value="	Microsoft Outlook has stopped working	"	>	Error: Microsoft Outlook has stopped working	</option>
+					<option value="	Microsoft PowerPoint has stopped working	"	>	Error: Microsoft PowerPoint has stopped working	</option>
+					<option value="	Microsoft Publisher has stopped working	"	>	Error: Microsoft Publisher has stopped working	</option>
+					<option value="	Microsoft Word has stopped working	"	>	Error: Microsoft Word has stopped working	</option>
+					<option value="	Microsoft Setup Bootstrapper has stopped working	"	>	Error: Microsoft Setup Bootstrapper has stopped working	</option>
+					<option value="	Something went wrong. Close this wizard and try again	"	>	Error: Something went wrong. Close this wizard and try again	</option>
+					<option value="	Something went wrong. Sorry, we ran into a problem. Try going online for additional help	"	>	Error: Something went wrong. Sorry, we ran into a problem.</option>
+					<option value="	Sorry, we couldn't connect to Microsoft services right now	"	>	Error: Sorry, we couldn't connect to Microsoft services right now	</option>
+					<option value="	That Microsft account doesn't exist. Enter a different email address	"	>	Error: That Microsft account doesn't exist.</option>
+					<option value="	That password is incorrect. Make sure you're using the password for your Microsoft account	"	>	Error: That password is incorrect.</option>
+					<option value="	The password is incorrect. Try again	"	>	Error: The password is incorrect. Try again	</option>
+					<option value="	The Product Key you have entered will not work with this edition of Windows	"	>	Error: The Product Key, not work with this edition of Windows	</option>
+					<option value="	The update is not applicable to your computer	"	>	Error: The update is not applicable to your computer	</option>
+					<option value="	The user name or password is incorrect	"	>	Error: The user name or password is incorrect	</option>
+					<option value="	There was a problem checking for updates	"	>	Error: There was a problem checking for updates	</option>
+					<option value="	This key can't be used to activate this edition of Windows. Please try a different key	"	>	Error: This key can't be used to activate this edition of Windows.</option>
+					<option value="	This product key didn't work. Please check it and try again, or try a different key	"	>	Error: This product key didn't work.</option>
+					<option value="	This product key is already being used on another PC. Try a different key or buy a new one	"	>	Error: This product key is already being used on another PC.</option>
+					<option value="	This Windows Live ID doesn't exist	"	>	Error: This Windows Live ID doesn't exist	</option>
+					<option value="	We can't connect right now. Check your internet connection and try again later	"	>	Error: We can't connect right now.</option>
+					<option value="	We couldn't verify the product key. Please check your installation media	"	>	Error: We couldn't verify the product key.</option>
+					<option value="	Windows Defender is disabled by Group Policy	"	>	Error: Windows Defender is disabled by Group Policy	</option>
+					<option value="	Windows Defender is turned off and isn't monitoring your computer	"	>	Error: Windows Defender is turned off and isn't monitoring your computer	</option>
+					<option value="	You can't add features to this edition of Windows	"	>	Error: You can't add features to this edition of Windows	</option>
+					<option value="	Forgot account User Name or Password	"	>	Forgot account User Name or Password	</option>
+					<option value="	Geoblocked	"	>	Geoblocked	</option>
+					<option value="	Hangs	"	>	Hangs	</option>
+					<option value="	Hangs at 0%	"	>	Hangs at 0%	</option>
+					<option value="	Hangs at 10%	"	>	Hangs at 10%	</option>
+					<option value="	Hangs at 3%	"	>	Hangs at 3%	</option>
+					<option value="	Hangs at 44%	"	>	Hangs at 44%	</option>
+					<option value="	Hangs at Applying Changes	"	>	Hangs at Applying Changes	</option>
+					<option value="	Hangs at Checking this Key	"	>	Hangs at Checking this Key	</option>
+					<option value="	Hangs at Downloading Windows	"	>	Hangs at Downloading Windows	</option>
+					<option value="	Hangs at Getting devices ready	"	>	Hangs at Getting devices ready	</option>
+					<option value="	Hangs at Getting files ready	"	>	Hangs at Getting files ready	</option>
+					<option value="	Hangs at Please Wait	"	>	Hangs at Please Wait	</option>
+					<option value="	Incompatible hardware/software reported	"	>	Incompatible hardware/software reported	</option>
+					<option value="	Incorrect CPU/Memory shown	"	>	Incorrect CPU/Memory shown	</option>
+					<option value="	Incorrect hash value displayed	"	>	Incorrect hash value displayed	</option>
+					<option value="	Issues with genuine This copy of Microsoft Office is not genuine	"	>	Issues with genuine Error: This copy of Microsoft Office is not genuine	</option>
+					<option value="	Issues with genuine This copy of Windows is not genuine	"	>	Issues with genuine Error: This copy of Windows is not genuine	</option>
+					<option value="	Issues with using my product key 	"	>	Issues with using my product key 	</option>
+					<option value="	Missing option to add features	"	>	Missing option to add features	</option>
+					<option value="	Missing options to choose installation location	"	>	Missing options to choose installation location	</option>
+					<option value="	Missing or no shortcut to launch	"	>	Missing or no shortcut to launch	</option>
+					<option value="	Missing shortcut	"	>	Missing shortcut	</option>
+					<option value="	Missing shortcut for app	"	>	Missing shortcut for app	</option>
+					<option value="	Missing toolbar(s)	"	>	Missing toolbar(s)	</option>
+					<option value="	Name is not available	"	>	Name is not available	</option>
+					<option value="	Nothing happens when attempting to close	"	>	Nothing happens when attempting to close	</option>
+					<option value="	Nothing happens when attempting to copy files	"	>	Nothing happens when attempting to copy files	</option>
+					<option value="	Nothing happens when attempting to fetch files	"	>	Nothing happens when attempting to fetch files	</option>
+					<option value="	Nothing happens when attempting to install	"	>	Nothing happens when attempting to install	</option>
+					<option value="	Nothing happens when attempting to launch	"	>	Nothing happens when attempting to launch	</option>
+					<option value="	Nothing happens when attempting to move files	"	>	Nothing happens when attempting to move files	</option>
+					<option value="	Nothing happens when attempting to open file	"	>	Nothing happens when attempting to open file	</option>
+					<option value="	Nothing happens when attempting to restore files	"	>	Nothing happens when attempting to restore files	</option>
+					<option value="	Nothing happens when attempting to save file	"	>	Nothing happens when attempting to save file	</option>
+					<option value="	Nothing happens when attempting to sync	"	>	Nothing happens when attempting to sync	</option>
+					<option value="	OneDrive closes unexpectedly	"	>	OneDrive closes unexpectedly	</option>
+					<option value="	Options are grayed out	"	>	Options are grayed out	</option>
+					<option value="	Performance	"	>	Performance	</option>
+					<option value="	Product Key email not received	"	>	Product Key email not received	</option>
+					<option value="	Rollback to previous OS with no error message	"	>	Rollback to previous OS with no error message	</option>
+					<option value="	Same update offered repeatedly	"	>	Same update offered repeatedly	</option>
+					<option value="	Security verification code not received by customer	"	>	Security verification code not received by customer	</option>
+					<option value="	Settings are not retained	"	>	Settings are not retained	</option>
+					<option value="	Setup closes unexpectedly	"	>	Setup closes unexpectedly	</option>
+					<option value="	Stop: DPC_WATCHDOG_VIOLATION	"	>	Stop: DPC_WATCHDOG_VIOLATION	</option>
+					<option value="	Stop: KERNEL_SECURITY_CHECK_FAILURE	"	>	Stop: KERNEL_SECURITY_CHECK_FAILURE	</option>
+					<option value="	Stop: SYSTEM_THREAD_EXCEPTION_NOT_HANDLED	"	>	Stop: SYSTEM_THREAD_EXCEPTION_NOT_HANDLED	</option>
+					<option value="	System does not meet software requirements	"	>	System does not meet software requirements	</option>
+					<option value="	System reboots to blank/black/colored display	"	>	System reboots to blank/black/colored display	</option>
+					<option value="	User is prompted to verify or input security information	"	>	User is prompted to verify or input security information	</option>
+					<option value="	Windows Store closes unexpectedly	"	>	Windows Store closes unexpectedly	</option>
+					<option value="	Zip/Postal code not valid	"	>	Zip/Postal code not valid	</option>
+					<option value="	Account creation issues	"	>	Account creation issues	</option>
+					<option value="	Account Sign-in Issue 	"	>	Account Sign-in Issue 	</option>
+					<option value="	Issues with Activating my software 	"	>	Issues with Activating my software 	</option>
+					<option value="	Issues with adding features 	"	>	Issues with adding features 	</option>
+					<option value="	Issues with Downloading my software 	"	>	Issues with Downloading my software 	</option>
+					<option value="	Issues with Installing my software 	"	>	Issues with Installing my software 	</option>
+					<option value="	Issues with my apps	"	>	Issues with my apps	</option>
+					<option value="	Issues with syncing files and folders	"	>	Issues with syncing files and folders	</option>
+					<option value="	Issues with System requirements 	"	>	Issues with System requirements 	</option>
+					<option value="	Issues with Uninstalling my software 	"	>	Issues with Uninstalling my software 	</option>
+					<option value="	Issues with Updating 	"	>	Issues with Updating 	</option>
+					<option value="	Issues with Windows Defender	"	>	Issues with Windows Defender	</option>
+					<option value=" Issue Not Listed	"	>	Issue Not Listed	</option>
+					<option value="	Virus or Malware	"	>	Virus or Malware	</option>
+					<option value=" 0	"	> </option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="columna1"></td>
+				<td class="columna2"><input name="text2" type="text" class="textomanual" id="A14" placeholder="Error code" style="visibility:hidden"></td>
+			</tr>
+			<tr>
+				<td class="columna1">Issue's Description:</td>
+				<td class="columna2"><textarea type="text" class="textarea" id="A15"></textarea></td>
+			</tr>
+		</table>
+		<br/>
+		<table width="420" border="0" cellpadding="4" class="bordest">
+			<tr>
+				<td class="columnatitulo" colspan="2">ACTION TAKEN</td>
+			</tr>
+			<tr>
+				<td class="columna1"></td>
+				<td class="columna2"></td>
+			</tr>
+			<tr>
+				<td class="columna1">Steps:</td>
+				<td class="columna2"><textarea type="text" class="textarea" id="A16" placeholder="Action/ Blocker/ Solution/"></textarea></td>
+			</tr>
+		</table>
+		<br/>
+		<table width="420" border="0" cellpadding="4" class="bordest">
+			<tr>
+				<td class="columnatitulo" colspan="2">LOGMEIN</td>
+			</tr>
+			<tr>
+				<td class="columna1"></td>
+				<td class="columna2"></td>
+			</tr>
+			<tr>
+				<td class="columna1">Chat:</td>
+				<td class="columna2"><textarea type="text" class="textarea" id="A17"></textarea></td>
+			</tr>
+		</table>
+		<br/><br/>
+		<input type="button" onClick="crearDocumento(getElementById('A1').value,
+														 getElementById('A2').value,
+														 getElementById('A3').value,
+														 getElementById('A4').value,
+														 getElementById('A5').value,
+														 getElementById('A6').value,
+														 getElementById('A7').value,
+														 getElementById('A8').value,
+														 getElementById('A9').value,
+														 getElementById('A10').value,
+														 getElementById('A11').value,
+														 getElementById('A12').value,
+														 getElementById('A13').value,
+														 getElementById('A14').value,
+														 getElementById('A15').value,
+														 getElementById('A16').value,
+														 getElementById('A17').value)" value="Create Document" />
+		&nbsp;&nbsp;
+		<input type="button" onclick="formReset()" value="Reset" />
+	</form>
+	<br/><br/>
+	<p class="final">
+		<span>| Microsoft Answer Desk CS3 | <br><br>
+		Designed by: Harold Murcia
+		<br/>
+		Maintenance by: Angel Camero
+		<br/>
+		Coordinated by: Carlos Cuadrado</span><br/>
+	</p>
+	</center>
+</body>
+</html>
