@@ -35,3 +35,8 @@ nav a:hover{
         z-index:-1;
 	top: 0px;
 }
+.pasoapaso{
+        z-index: 2;
+	top: 0px;
+	left: 50%;
+}
